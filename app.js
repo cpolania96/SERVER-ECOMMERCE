@@ -2,6 +2,7 @@ import { config } from 'dotenv'
 import express from 'express'
 import dbConnection from './db/dbConfig.js'
 import auth from './routes/auth.js'
+import cors from 'cors'
 
 // SERVIDOR
 const { SRV_PORT } = config().parsed
@@ -14,6 +15,9 @@ server.on('error', err => console.log(`Error en servidor: ${err}`))
 
 // DATABASE
 dbConnection()
+
+// CORS
+app.use(cors())
 
 // RUTAS
 app.use('/api/auth', auth)
