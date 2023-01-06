@@ -80,7 +80,7 @@ controllerAuth.register = async (req, res) => {
     }
 }
 
-// Módulo de revalidación de token
+// Módulo de renovación de token
 controllerAuth.renew = async (req, res) => {
     const {uid, name} = req
     let token = await generateJWT(uid, name)
