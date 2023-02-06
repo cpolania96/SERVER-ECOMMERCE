@@ -60,8 +60,10 @@ controllerEcommerce.carouselDeleteSources = async (req = request, res = response
 
 // Editar recursos
 controllerEcommerce.carouselEditSources = async (req = require, res = response) => {
-    const { id } = req.headers || {}
-    console.log(id)
+    const { id_ } = req.headers || {}
+    let deleteItem = await Carousel.findById(id_)
+    console.log(deleteItem)
+
 }
 
 export default controllerEcommerce
