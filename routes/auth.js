@@ -3,6 +3,7 @@ import { check } from "express-validator"
 import validateFields from "../middlewares/validate-fields.js";
 import controllerAuth from "../controllers/controller-auth.js";
 import validateToken from "../middlewares/validate-token.js";
+import validateRoles from "../middlewares/validate-roles.js";
 
 const auth = Router()
 
@@ -25,7 +26,7 @@ auth.post('/register', [
 ]
     , controllerAuth.register
 )
-auth.post('/renew', [validateToken], controllerAuth.renew)
+auth.post('/renew', validateToken, validateRoles(['user', 'admin']), controllerAuth.renew)
 
 
 export default auth

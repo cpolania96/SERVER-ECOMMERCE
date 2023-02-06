@@ -3,6 +3,7 @@ import express from 'express'
 import dbConnection from './db/dbConfig.js'
 import auth from './routes/auth.js'
 import cors from 'cors'
+import ecommerce from './routes/ecommerce.js'
 
 // SERVIDOR
 const { SRV_PORT } = config().parsed
@@ -21,4 +22,5 @@ app.use(cors())
 
 // RUTAS
 app.use('/api/auth', auth)
+app.use('/api/ecommerce', ecommerce)
 

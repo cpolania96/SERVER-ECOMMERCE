@@ -13,6 +13,10 @@ const userSchema = Schema({
     password: {
         type: String,
         require: true
+    },
+    roles: {
+        type: Array,
+        default: 'user'
     }
 })
 

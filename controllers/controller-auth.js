@@ -34,9 +34,11 @@ controllerAuth.login = async (req, res) => {
             ok: true,
             uid: user.id,
             name: user.name,
+            msg: 'Inicio de sesión exitoso',
             token
         })
     } catch (error) {
+        // Manejo de errores
         console.log(error);
         res.status(500).json({
             ok: false,
