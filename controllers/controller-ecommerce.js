@@ -58,11 +58,33 @@ controllerEcommerce.carouselDeleteSources = async (req = request, res = response
     console.log(id)
 }
 
-// Editar recursos
+// Editar recursos -- TODO
 controllerEcommerce.carouselEditSources = async (req = require, res = response) => {
-    const { id_ } = req.headers || {}
-    let deleteItem = await Carousel.findById(id_)
-    console.log(deleteItem)
+    const { id_ } = req.headers
+    const prop = req.body
+    try {
+        let editItem = await Carousel.findOneAndUpdate(id_, prop, { new: true })
+        console.log(editItem)
+        if (editItem) {
+            res.status(200).json({
+                ok: true,
+                msg: 'Se editó el objeto satisfactoriamente',
+                cont: editItem
+            })
+        } else {
+            res.status(404).json({
+                ok: false,
+                msg: 'No se encontró la imagen para editar'
+            })
+        }
+    } catch (error) {
+        if (error) {
+            res.status(400).json({
+                ok: false,
+                msg: 'No se pudo editar la información'
+            })
+        }
+    }
 
 }
 
